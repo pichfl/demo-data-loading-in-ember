@@ -1,0 +1,9 @@
+{{page-title "Index"}}
+
+<h2>Index</h2>
+
+{{#each this.model as |author|}}
+  <Author @model={{author}} />
+{{/each}}
+
+{{outlet}}

@@ -1,0 +1,11 @@
+{{page-title "Book"}}
+
+<LinkTo @route="index">Index</LinkTo> <LinkTo @route="book" @models={{array this.model.id}}>Book with Task</LinkTo>
+
+<h2>Book</h2>
+
+<Book @model={{this.model}} />
+
+<h2>Reviews</h2>
+
+{{outlet}}

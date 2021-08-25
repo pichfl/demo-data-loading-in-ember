@@ -1,0 +1,39 @@
+{{page-title "Book"}}
+
+<LinkTo @route="index">Index</LinkTo> <LinkTo @route="book" @models={{array this.model.id}}>Book with Index Route</LinkTo>
+
+<h2>Book</h2>
+
+<Book @model={{this.model.book}} />
+
+<h2>Reviews</h2>
+
+<button type="button" {{on "click" (fn (mut this.rating) null)}}>
+  All reviews
+</button>
+
+<button type="button" {{on "click" (fn (mut this.rating) 3)}}>
+  Reviews with Rating > 3
+</button>
+
+<button type="button" {{on "click" (fn (mut this.rating) 5)}}>
+  Reviews with Rating 5
+</button>
+
+{{did-update this.ratingChange this.rating}}
+
+{{#if this.model.loadReviewsTask.isRunning}}
+  <p>
+    <img src="https://media3.giphy.com/media/Up28yzcpluW5ey1JOE/giphy.gif?cid=ecf05e47j4mt2wglrzfm2lbwkkrpe3d3ee2y4lvbx1878tit&rid=giphy.gif&ct=g" alt="Loading" width="200" />
+  </p>
+{{else if this.model.loadReviewsTask.lastSuccessful.value}}
+  <ul>
+    {{#each this.model.loadReviewsTask.lastSuccessful.value as |review|}}
+      <li>
+        <Review @model={{review}} />
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>None found.</p>
+{{/if}}

@@ -1,0 +1,23 @@
+{{page-title "Index"}}
+
+<button type="button" {{on "click" (fn (mut this.rating) null)}}>
+  All reviews
+</button>
+
+<button type="button" {{on "click" (fn (mut this.rating) 3)}}>
+  Reviews with Rating > 3
+</button>
+
+<button type="button" {{on "click" (fn (mut this.rating) 5)}}>
+  Reviews with Rating 5
+</button>
+
+<ul>
+  {{#each this.model as |review|}}
+    <li>
+      <Review @model={{review}} />
+    </li>
+  {{else}}
+    <li>No Results</li>
+  {{/each}}
+</ul>

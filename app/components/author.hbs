@@ -1,0 +1,11 @@
+<h3>
+  {{@model.name}}
+</h3>
+
+<ul>
+  {{#each @model.books as |book|}}
+    <li>
+      <Book @model={{book}} />
+    </li>
+  {{/each}}
+</ul>
